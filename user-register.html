@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            text-align: center;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: tomato;
+        }
+
+        input, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: tomato;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 48%; /* Adjusted width */
+        }
+
+        .back-button {
+            background-color: #ddd;
+            color: black;
+            width: 48%; /* Adjusted width */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>User Registration</h2>
+
+    <!-- Step 1: First and Last Name -->
+    <div class="form-step active" id="step1">
+        <form id="registrationFormStep1">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" required>
+            </div>
+
+            <button type="button" onclick="nextStep('step1', 'step2')">Next</button>
+        </form>
+    </div>
+
+    <!-- Step 2: Username, Password, Confirm Password -->
+    <div class="form-step" id="step2">
+        <form id="registrationFormStep2">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" required>
+            </div>
+
+            <button type="button" onclick="nextStep('step2', 'step1')" class="back-button">Back</button>
+            <button type="button" onclick="nextStep('step2', 'step3')">Next</button>
+        </form>
+    </div>
+
+    <!-- Step 3: Skills, Education -->
+    <div class="form-step" id="step3">
+        <form id="registrationFormStep3">
+            <div class="form-group">
+                <label for="skills">Skills:</label>
+                <input type="text" id="skills" required>
+            </div>
+
+            <div class="form-group">
+                <label for="education">Education:</label>
+                <select id="education" required>
+                    <option value="">Select Education Level</option>
+                    <option value="highSchool">High School</option>
+                    <option value="bachelors">Bachelor's Degree</option>
+                    <option value="masters">Master's Degree</option>
+                    <option value="phd">Ph.D.</option>
+                </select>
+            </div>
+
+            <button type="button" onclick="nextStep('step3', 'step2')" class="back-button">Back</button>
+            <button type="button" onclick="register()">Register</button>
+        </form>
+    </div>
+
+    <p>Already have an account? <a href="user-login.html">Login here</a></p>
+    <p id="orr">or</p>
+    <p>Register as Service Provider? <a href="company-register.html">Company Register here.</a></p>
+    <hr>
+    <p>Return to Home: <a href="index.html">Home</a></p>
+</div>
+
+<script>
+    function nextStep(currentStep, nextStep) {
+        document.getElementById(currentStep).classList.remove('active');
+        document.getElementById(nextStep).classList.add('active');
+    }
+
+    function register() {
+        // Get user input from all steps
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const skills = document.getElementById('skills').value;
+        const education = document.getElementById('education').value;
+
+        // Validate password match
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            return;
+        }
+
+        // Simulate registration logic (replace with actual server-side code)
+        alert(`Registration Successful!\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nUsername: ${username}\nSkills: ${skills}\nEducation: ${education}`);
+    }
+</script>
+
+</body>
+</html>
