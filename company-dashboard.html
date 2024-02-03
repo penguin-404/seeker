@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ecf0f1;
+        }
+
+        .navbar {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 90px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            padding: 8px 0;
+            text-align: left;
+        }
+
+        .profile-dropdown-content a {
+            color: #333;
+            padding: 8px 16px;
+            display: block;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .profile-dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .profile-dropdown:hover .profile-dropdown-content {
+            display: block;
+        }
+
+        .dashboard-section {
+            display: flex;
+            padding: 20px;
+            justify-content: space-between;
+        }
+
+        .side-menu {
+            width: 15%;
+            background-color: #e74c3c;
+            padding: 10px;
+            box-sizing: border-box;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .menu-link {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .menu-link:hover {
+            background-color: #c0392b;
+        }
+
+        .menu-link.active {
+            background-color: #c0392b;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            margin-left: 20px;
+        }
+
+        .footer {
+            background-color: #e74c3c;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        h2 {
+            color: #e74c3c;
+        }
+
+        .post-job-section {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        .job-listing {
+            margin-bottom: 20px;
+            border: 1px solid #e74c3c;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div>SEEKER</div>
+    <div class="profile-dropdown">
+        <div>
+            <img src="profile-icon.png" alt="Profile Icon" width="30" height="30">
+        </div>
+        <div class="profile-dropdown-content">
+            <a href="#">Visit Profile</a>
+            <a href="#">Settings</a>
+            <a href="/company-login.html">Logout</a>
+        </div>
+    </div>
+</div>
+
+<!-- Dashboard Section -->
+<div class="dashboard-section">
+    <!-- Side Menu -->
+    <div class="side-menu">
+        <h3>Menu</h3>
+        <a href="#" class="menu-link active">Dashboard</a>
+        <a href="#" class="menu-link">Jobs Posted</a>
+        <a href="#" class="menu-link">Messages</a>
+        <a href="#" class="menu-link">Statistics</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Post Job Section -->
+        <div class="post-job-section">
+            <h3>Post a Job</h3>
+            <form id="postJobForm">
+                <label for="jobTitle">Job Title:</label>
+                <input type="text" id="jobTitle" name="jobTitle" required>
+
+                <label for="jobDescription">Job Description:</label>
+                <textarea id="jobDescription" name="jobDescription" rows="4" required></textarea>
+
+                <label for="requiredSkills">Required Skills:</label>
+                <input type="text" id="requiredSkills" name="requiredSkills" required>
+
+                <label for="educationLevel">Education Level:</label>
+                <select id="educationLevel" name="educationLevel" required>
+                    <option value="High School">High School</option>
+                    <option value="Bachelor's Degree">Bachelor's Degree</option>
+                    <option value="Master's Degree">Master's Degree</option>
+                    <option value="Ph.D.">Ph.D.</option>
+                </select>
+
+                <button type="submit">Post Job</button>
+            </form>
+        </div>
+
+        <!-- List of Jobs Posted -->
+        <div class="job-listing-posted">
+            <h3>Jobs Posted</h3>
+            <div class="job-listing">
+                <p><strong>Job Title:</strong> Job 1</p>
+                <p><strong>Location:</strong> City X</p>
+                <p class="job-description"><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget libero ligula.</p>
+                <p><strong>Required Skills:</strong> Skill A, Skill B, Skill C</p>
+                <p><strong>Education Level:</strong> Bachelor's Degree</p>
+                <button class="edit-job-btn" onclick="editJob(1)">Edit Job</button>
+                <button class="delete-job-btn" onclick="deleteJob(1)">Delete Job</button>
+            </div>
+
+            <div class="job-listing">
+                <p><strong>Job Title:</strong> Job 2</p>
+                <p><strong>Location:</strong> City Y</p>
+                <p class="job-description"><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget libero ligula.</p>
+                <p><strong>Required Skills:</strong> Skill X, Skill Y, Skill Z</p>
+                <p><strong>Education Level:</strong> Master's Degree</p>
+                <button class="edit-job-btn" onclick="editJob(2)">Edit Job</button>
+                <button class="delete-job-btn" onclick="deleteJob(2)">Delete Job</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    &copy; 2024 SEEKER
+</div>
+
+<script>
+    document.getElementById("postJobForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        // Implement job posting logic here
+        alert('Job posted successfully!');
+        // Clear form fields if needed
+        this.reset();
+    });
+
+    function editJob(jobId) {
+        // Implement job editing logic here
+        alert('Edit functionality to be implemented for Job ID: ' + jobId);
+    }
+
+    function deleteJob(jobId) {
+        // Implement job deletion logic here
+        alert('Job deleted successfully!');
+    }
+</script>
+
+</body>
+</html>

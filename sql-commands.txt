@@ -1,0 +1,65 @@
+-- User table
+CREATE TABLE User (
+    UserID INT PRIMARY KEY,
+    Username VARCHAR(255),
+    Password VARCHAR(255),
+    Email VARCHAR(255),
+    FirstName VARCHAR(255),
+    LastName VARCHAR(255),
+    DateOfBirth DATE
+);
+
+-- UserProfile table
+CREATE TABLE UserProfile (
+    ProfileID INT PRIMARY KEY,
+    UserID INT,
+    Skills VARCHAR(255), -- Comma-separated or related table for Skills
+    Education VARCHAR(255),
+    Interests VARCHAR(255),
+    FOREIGN KEY (UserID) REFERENCES User(UserID)
+);
+
+-- Company table
+CREATE TABLE Company (
+    CompanyID INT PRIMARY KEY,
+    CompanyName VARCHAR(255),
+    Username VARCHAR(255),
+    Password VARCHAR(255),
+    Email VARCHAR(255),
+    Industry VARCHAR(255)
+);
+
+-- JobPost table
+CREATE TABLE JobPost (
+    JobID INT PRIMARY KEY,
+    CompanyID INT,
+    JobTitle VARCHAR(255),
+    JobDescription TEXT,
+    RequiredSkills VARCHAR(255), -- Comma-separated or related table for Skills
+    EducationRequirements VARCHAR(255),
+    FOREIGN KEY (CompanyID) REFERENCES Company(CompanyID)
+);
+
+-- Application table
+CREATE TABLE Application (
+    ApplicationID INT PRIMARY KEY,
+    UserID INT,
+    JobID INT,
+    ApplicationDate DATE,
+    Status VARCHAR(50),
+    FOREIGN KEY (UserID) REFERENCES User(UserID),
+    FOREIGN KEY (JobID) REFERENCES JobPost(JobID)
+);
+
+-- Skill table
+CREATE TABLE Skill (
+    SkillID INT PRIMARY KEY,
+    SkillName VARCHAR(255)
+);
+
+-- EducationLevel table
+CREATE TABLE EducationLevel (
+    EduLevelID INT PRIMARY KEY,
+    LevelName VARCHAR(255)
+);
+
