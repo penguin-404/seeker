@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/bid.css' %}">
+  <title>Bidding Page</title>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <h1>SEEKER</h1>
+    </div>
+    <div class="header-right">
+      <button>Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="bidding-container">
+      <div class="bidding-box">
+        <h2>Bidding</h2>
+        <p>Price Range: ${{lower_bound}} - ${{upper_bound}}</p>
+        <form method="POST" action="{% url 'bid' %}" id="bidding-form">
+            {% csrf_token %}
+          <label for="bid-amount">Enter Your Bid:</label>
+          <input type="number" name="bid-amount" placeholder="Enter amount">
+          <div class="button-group">
+                <input type="hidden" name="job_id" value="{{ job.id }}">
+                <button type="submit" class="apply-button">Bid</button>
+                <button type="button" class="clear-button">Clear</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
