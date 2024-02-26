@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Profile</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/styles1.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Profile</h1>
+    <form method="POST" id="profileForm">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <!-- Display the Full Name of the user -->
+            <input type="text" id="fullName" name="fullName" value="{{ user.get_full_name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="interests">Interests:</label>
+            <!-- Display the existing Interests of the user -->
+            <input type="text" id="interests" name="interests" value="{{ profile.interests }}" required>
+        </div>
+        <div class="form-group">
+            <label for="skills">Skills:</label>
+            <!-- Display the existing Skills of the user -->
+            <input type="text" id="skills" name="skills" value="{{ profile.skills }}" required>
+        </div>
+        <div class="form-group">
+            <label for="location">Location:</label>
+            <!-- Display the existing Skills of the user -->
+            <input type="text" id="location" name="location" value="{{ profile.location }}" required>
+        </div>
+        <div class="form-group">
+            <label for="skills">Education:</label>
+            <!-- Display the existing Skills of the user -->
+            <input type="text" id="education" name="education" value="{{ profile.education }}" required>
+        </div>
+        <button type="submit" class="update-btn">Update</button>
+    </form>
+</div>
+</body>
+</html>

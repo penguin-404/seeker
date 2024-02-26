@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: tomato;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .header-left h1 {
+    margin: 0;
+  }
+  
+  .bidding-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .bidding-box {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+  }
+  
+  .bidding-box h2 {
+    margin-top: 0;
+    color: tomato;
+    text-align: center;
+  }
+  
+  .bidding-box p {
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  #bidding-form {
+    margin-top: 20px;
+  }
+  
+  #bidding-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  #bidding-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .button-group button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .apply-button {
+    background-color: tomato;
+    color: white;
+  }
+  
+  .clear-button {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .clear-button:hover {
+    background-color: #aaa;
+  }
+  
